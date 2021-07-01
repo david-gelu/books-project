@@ -176,7 +176,7 @@ body {
   transform: perspective(2000px);
   transform-origin: left;
   transform-style: preserve-3d;
-  transition: 0.5s;
+  transition: box-shadow 0.5s;
   z-index: 1;
   box-shadow: inset 300px 0 50px rgba($black, .01), 4px 4px 15px 2px rgba($black, .15), -4px -4px 15px 2px rgba($black, .15);
 }
