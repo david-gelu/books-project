@@ -1,0 +1,240 @@
+/* reset*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol {
+  list-style-type: none;
+}
+a,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+  @media (min-width: 2200px) {
+  }
+  html {
+    font-size: 2vh;
+  }
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-sizing: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+/*****************************************/
+
+$black: #000;
+$white: #ffffff;
+$bg-color: rgba($black, 0.1);
+$text-color: #0b536b;
+$content-color: #48b7e4;
+$link-color: #663399;
+
+/*****************************************/
+body {
+  background: $bg-color;
+}
+.title {
+  text-align: center;
+  color: $text-color;
+  padding: .5em;
+  font-size: 4rem;
+}
+.form-control{
+  font-size: .7rem;
+  color: $text-color;
+  font-weight: 700;
+  margin-left: 1em;
+  max-width: 20em;
+  min-width: 20em;
+  &:focus{
+    border: none;
+  box-shadow: none;
+  }
+}
+.search-icon{
+  position: absolute;
+  color: $text-color;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.dropdown-container{
+  display: flex;
+  flex-direction:column;
+  margin-top: 1em;
+  margin-left: .8em;
+  position: relative;
+  width: 100%;
+  .filter-btn{
+    background: $bg-color !important;
+    color: $black;
+    font-weight: 600;
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    max-width: 15.8em;
+    min-width: 15.8em;
+  }
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: $black;
+  background: rgba($black, .0);
+  border: none;
+  box-shadow: none;
+  &:focus{
+    box-shadow: none;
+  }
+}
+.btn-primary{
+  color: $black;
+  background: rgba($black, .0);
+  border: none;
+  box-shadow: none;
+  &:hover,&:focus{
+    color: $black;
+    background: rgba($black, .0);
+    border: none;
+    box-shadow: none;
+  }
+}
+.dropdown-item{
+  font-size: .9rem;
+  &:hover,&:focus{
+    color: $black;
+    background: $white;
+    border: none;
+    box-shadow: none;
+  }
+  
+}
+.container-books{
+  width: 80%;
+  margin: 1em auto;
+  color: $white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 4em;
+  & > .content-books {
+    background: $white;
+    border: 1px solid $white;
+    & > div {
+      min-height: 100%;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      .details-book {
+        margin: 1.2em;
+        display: flex;
+        align-items: flex-start;
+        div {
+          width: 90%;
+          background: $text-color;
+          padding: 0.25em;
+        }
+      }
+    }
+  }
+}
+
+/***card**/
+
+.card-item {
+  position: relative;
+  padding: 0;
+  min-height: 24em;
+  min-width: 15em;
+  max-width: 15em;
+  border-radius: 0.5em;
+  transform: perspective(2000px);
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: 0.5s;
+  z-index: 1;
+  box-shadow: inset 300px 0 50px rgba($black, .01), 4px 4px 15px 2px rgba($black, .15), -4px -4px 15px 2px rgba($black, .15);
+}
+.card-item:hover {
+  box-shadow: inset .1em 0 1.5em rgba($black, .4);
+}
+.card-item img {
+  background: $white;
+  width: 100%;
+  min-height: 20em;
+  max-height: 20em;
+  // border: 1px solid $black ;
+  
+  z-index: 2;
+  border-radius: 0.5em;
+  transform-origin: left;
+  transition: 0.5s;
+}
+.card-item:last-child img {
+  width: 100%;
+}
+
+.card-item:hover img {
+  transform: rotateY(-110deg);
+}
+.card-item img:hover {
+  transform: rotateY(-110deg);
+}
+
+.card-text {
+  position: absolute;
+  top: 1.9em;
+  left: 1em;
+  right: 1em;
+  width: calc(100% - 2em);
+  & div {
+    margin-top: 0.2em;
+    padding: 0.25em 0.5em;
+    background: $text-color;
+    width: 100%;
+  }
+}
+.card-item:hover .detail-btn {
+  display: none;
+}
+.cv {
+  position: absolute;
+  bottom: 10%;
+  left: 0%;
+  transform: translateX(-50%);
+}
+.detail-btn {
+  background: $bg-color !important;
+  color: $black;
+  font-weight: 600;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  margin-top: 5.7em !important;
+  margin-left: 50%;
+  transform: translate(-50%,-50%);
+}
