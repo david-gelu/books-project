@@ -57,15 +57,27 @@ $content-color: #48b7e4;
 $link-color: #663399;
 
 /*****************************************/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
 body {
   background: $bg-color;
 }
+
 .title {
-  text-align: center;
-  color: $text-color;
+  font-family: 'Playfair Display', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  text-shadow: 8px 8px 0.01em rgba($black, .15);
   padding: .5em;
-  font-size: 4rem;
+  height: 30vh;
+  background: $text-color;
+  & *{
+    font-size: 4rem;
+  }
 }
+
 .form-control{
   font-size: .7rem;
   color: $text-color;
@@ -77,13 +89,14 @@ body {
     border: none;
   box-shadow: none;
   }
-}
-.search-icon{
-  position: absolute;
-  color: $text-color;
-  right: 0.5em;
-  top: 50%;
-  transform: translateY(-50%);
+
+  .search-icon{
+    position: absolute;
+    color: $text-color;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 .dropdown-container{
   display: flex;
@@ -108,8 +121,11 @@ body {
   border: none;
   box-shadow: none;
   &:focus{
-    box-shadow: none;
+      box-shadow: none;
   }
+}
+.show-more{
+  background: $text-color;
 }
 .btn-primary{
   color: $black;
@@ -179,31 +195,32 @@ body {
   transition: box-shadow 0.5s;
   z-index: 1;
   box-shadow: inset 300px 0 50px rgba($black, .01), 4px 4px 15px 2px rgba($black, .15), -4px -4px 15px 2px rgba($black, .15);
-}
-.card-item:hover {
-  box-shadow: inset .1em 0 1.5em rgba($black, .4);
-}
-.card-item img {
-  background: $white;
-  width: 100%;
-  min-height: 20em;
-  max-height: 20em;
-  z-index: 2;
-  border-radius: 0.5em;
-  transform-origin: left;
-  transition: 0.5s;
-}
-.card-item:last-child img {
-  width: 100%;
-}
 
-.card-item:hover img {
-  transform: rotateY(-110deg);
-}
-.card-item img:hover {
-  transform: rotateY(-110deg);
-}
+  &:hover {
+    box-shadow: inset .1em 0 1.5em rgba($black, .4);
+  }
 
+  & img {
+    background: $white;
+    width: 100%;
+    min-height: 20em;
+    max-height: 20em;
+    z-index: 2;
+    border-radius: 0.5em;
+    transform-origin: left;
+    transition: 0.5s;
+  }
+  &:last-child img {
+    width: 100%;
+  }
+
+  &:hover img {
+    transform: rotateY(-110deg);
+  }
+  &img:hover {
+    transform: rotateY(-110deg);
+  }
+}
 .card-text {
   position: absolute;
   top: 1.9em;
@@ -220,19 +237,22 @@ body {
 .card-item:hover .detail-btn {
   display: none;
 }
-.cv {
-  position: absolute;
-  bottom: 10%;
-  left: 0%;
-  transform: translateX(-50%);
-}
+
 .detail-btn {
-  background: $bg-color !important;
-  color: $black;
+  background: $text-color !important;
+  color: $white;
   font-weight: 600;
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
   margin-top: 5.7em !important;
   margin-left: 50%;
   transform: translate(-50%,-50%);
+  &.align {
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    bottom: 10%;
+    left: 0%;
+    transform: translateX(-50%);
+  }
 }

@@ -108,8 +108,8 @@ const Sort = ({ setFilterBook}) =>{
         Sort by Author
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="#/sortByAuthorDesc" onClick={sortByAuthorDesc}>Sort by author desc</Dropdown.Item>
           <Dropdown.Item href="#/sortByAuthorAsc" onClick={sortByAuthorAsc}>Sort by author asc</Dropdown.Item>
+          <Dropdown.Item href="#/sortByAuthorDesc" onClick={sortByAuthorDesc}>Sort by author desc</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Dropdown size='sm'>
@@ -117,8 +117,8 @@ const Sort = ({ setFilterBook}) =>{
         Sort by Country
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="#/sortByCountryDesc" onClick={sortByCountryDesc}>Sort by country desc</Dropdown.Item>
           <Dropdown.Item href="#/sortByCountryAsc" onClick={sortByCountryAsc}>Sort by country asc</Dropdown.Item>
+          <Dropdown.Item href="#/sortByCountryDesc" onClick={sortByCountryDesc}>Sort by country desc</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Dropdown size='sm'>
@@ -126,8 +126,8 @@ const Sort = ({ setFilterBook}) =>{
         Sort by Language
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="#/sortByLanguageDesc" onClick={sortByLanguageDesc}>Sort by language desc</Dropdown.Item>
           <Dropdown.Item href="#/sortByLanguageAsc" onClick={sortByLanguageAsc}>Sort by language asc</Dropdown.Item>
+          <Dropdown.Item href="#/sortByLanguageDesc" onClick={sortByLanguageDesc}>Sort by language desc</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Dropdown>
@@ -135,8 +135,8 @@ const Sort = ({ setFilterBook}) =>{
         Sort by Year
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="#/sortByYearDesc" onClick={sortByYearDesc}>Sort by year desc</Dropdown.Item>
           <Dropdown.Item href="#/sortByYearAsc" onClick={sortByYearAsc}>Sort by year asc</Dropdown.Item>
+          <Dropdown.Item href="#/sortByYearDesc" onClick={sortByYearDesc}>Sort by year desc</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Dropdown size='sm'>
@@ -144,8 +144,8 @@ const Sort = ({ setFilterBook}) =>{
         Sort by No. of Pages
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="#/sortByPagesDesc" onClick={sortByPagesDesc}>Sort by pages desc</Dropdown.Item>
           <Dropdown.Item href="#/sortByPagesAsc" onClick={sortByPagesAsc}>Sort by pages asc</Dropdown.Item>
+          <Dropdown.Item href="#/sortByPagesDesc" onClick={sortByPagesDesc}>Sort by pages desc</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </>
