@@ -5,57 +5,65 @@ import Filters from './Filters'
 import Header from './Header'
 
 export default function App() {
-    const [jsonData, setJsonData] = useState([])
-    const [filterBook, setFilterBook] = useState(jsonData)
-    const[count, setCount] = useState(9)
-  
+  const [jsData, setJsData] = useState([])
+  const [filterBook, setFilterBook] = useState(jsData)
+  const[count, setCount] = useState(9)
+  const [showFiltersDiv, setShowFiltersDiv] = useState(false)
 
-    useEffect(() => {
-        const makeJsonData = async () => {
-            await setJsonData(data)
-        }
-        makeJsonData()
-    }, [jsonData])
+  useEffect(() => {
+      const makejsData = async () => {
+          await setJsData(data)
+      }
+      makejsData()
+  }, [jsData])
 
-    return (
+  return (
         <>
-            <Header />
-            <div className='d-flex flex-wrap'>
-                <Filters  setFilterBook={setFilterBook} jsonData={jsonData}/>
-                <div className="container-books">
-          
-                    {filterBook
-                        .filter((title) => filterBook.title !== title)
-                        .slice(0, count)
-                        .map(
-                            ({title,imageLink,author,country,language,link,pages,year,idx,}) => (
-                                <>
-                                    <div className="content-books card-item" key={idx}>
-                                        <div className="img-container">
-                                            <img src={imageLink} alt={author} />
-                                        </div>
-                                        <div className="details-book card-text">
-                                            <div>Title: {title}</div>
-                                            <div>Author: {author}</div>
-                                            <div>Country: {country}</div>
-                                            <div>Language: {language}</div>
-                                            <div>Pages: {pages}</div>
-                                            <div>Year of publish: {year}</div>
-                                            <div>
-                                                <a href={link}target="_blank" rel="noreferrer"className="fab fa-wikipedia-w"> Info </a>
-                                            </div> 
-                                            <Button size='sm' className="detail-btn align">
-                                                {title}
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </>
-                            ))}
+        <Header />
+          <div className='d-flex' >
+            <div className='scroll-top'>
+              <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
+                {!showFiltersDiv && <Filters showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>}
+                <div className='filters-collapse'
+                  onClick={()=> setShowFiltersDiv(!showFiltersDiv)}>
+                  <i className={`fas ${showFiltersDiv ? 'fa-filter' :'fa-times-circle'}`}></i>
                 </div>
+              </div>
+              <a href='#top' className='back-top'><i className="fas fa-arrow-circle-up"></i></a>
             </div>
-            <div className='show-more'>
-                {count < filterBook.length ? <Button size='sm' className='detail-btn' onClick={() => {setCount(count + 9)} }>Show more </Button> : <></>}
-            </div>
-        </>
-    )
+            {filterBook.length !== 0 ? 
+            <div className="container-books">
+              {filterBook
+                .filter((title) => filterBook.title !== title)
+                .slice(0, count)
+                .map(({title, imageLink, author, country, language, link, pages, year, idx}) => (
+                  <>
+                    <div className="content-books card-item" key={idx}>
+                      <div className="img-container">
+                        <img src={imageLink} alt={author} />
+                      </div>
+                      <div className="details-book card-text">
+                        <div>Title: {title}</div>
+                        <div>Author: {author}</div>
+                        <div>Country: {country}</div>
+                        <div>Language: {language}</div>
+                        <div>Pages: {pages}</div>
+                        <div>Year of publish: {year}</div>
+                        <div>
+                          <a href={link}target="_blank" rel="noreferrer"className="fab fa-wikipedia-w"> Info </a>
+                        </div> 
+                        <div key={`${idx}-btn`} size='sm' className="detail-btn align">
+                          {title}
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ))}
+          </div> : <div className='loader'>Library is opening</div>}
+        </div>
+        <div className='show-more'>
+          {count < filterBook.length ? <Button size='sm' className='detail-btn' onClick={() => {setCount(count + 9)} }>Show more </Button> : <></>}
+        </div>
+    </> 
+  )
 }
