@@ -23,7 +23,7 @@ const Filters =({showFiltersDiv, setFilterBook, jsData, filterBook}) =>{
             d.country.toLowerCase().includes(search.toLowerCase())
         )
       )
-    }, 3000)
+    }, 1000)
     return () => clearTimeout(timeout)
   }, [jsData, setFilterBook, search])
 
