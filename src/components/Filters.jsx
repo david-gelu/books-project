@@ -63,7 +63,7 @@ const Filters =({showFiltersDiv, setFilterBook, jsData, filterBook}) =>{
     setSearch('')
   }
   return(
-    <div className='d-flex flex-column mt-3 filters-container' aria-expanded={showFiltersDiv}>
+    <div className='d-flex flex-column mt-3 filters-container' aria-expanded={!showFiltersDiv}>
       <Form className='position-relative'>
         <FormControl size='sm' className='position-relative w-100 pr-4' type='search' placeholder="Search" value={search}
           aria-label="Search user" onChange={(e) => setSearch(e.target.value ?? null)}></FormControl>
