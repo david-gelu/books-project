@@ -31,14 +31,14 @@ export default function App() {
             { filterBook.length === 0 ? <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
                 <Filters search={search} setSearch={setSearch} cancelFilters={cancelFilters} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>
                 <div className='filters-collapse'
-                  onClick={()=> {setShowFiltersDiv(!showFiltersDiv); cancelFilters()}}>
+                  onClick={()=> setShowFiltersDiv(!showFiltersDiv)}>
                   <i className={`fas ${showFiltersDiv ? 'fa-filter' :'fa-times-circle'}`}></i>
                 </div>
               </div>:
               <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
               {!showFiltersDiv && <Filters search={search} setSearch={setSearch} cancelFilters={cancelFilters} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>}
               <div className='filters-collapse'
-                onClick={()=> {setShowFiltersDiv(!showFiltersDiv); cancelFilters()}}>
+                onClick={()=> setShowFiltersDiv(!showFiltersDiv)}>
                 <i className={`fas ${showFiltersDiv ? 'fa-filter' :'fa-times-circle'}`}></i>
               </div>
             </div>}
