@@ -3,9 +3,8 @@ import { Button, Form, FormControl } from 'react-bootstrap'
 import Sort from './Sort'
 
 
-const Filters =({showFiltersDiv, setFilterBook, jsData, filterBook}) =>{
+const Filters =({showFiltersDiv, setFilterBook, jsData, filterBook, search, setSearch}) =>{
 
-  const [search, setSearch] = useState('')
   const [showSort, setShowSort] = useState(true)
   const [showFilters, setShowFilters] = useState(false)
   const [showAuthors, setShowAuthors] = useState(true)

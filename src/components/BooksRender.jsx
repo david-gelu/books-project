@@ -8,7 +8,8 @@ export default function App() {
   const [jsData, setJsData] = useState([])
   const [filterBook, setFilterBook] = useState(jsData)
   const[count, setCount] = useState(9)
-  const [showFiltersDiv, setShowFiltersDiv] = useState(false)
+  const [showFiltersDiv, setShowFiltersDiv] = useState(true)
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
       const makejsData = async () => {
@@ -17,18 +18,30 @@ export default function App() {
       makejsData()
   }, [jsData])
 
+  const cancelFilters = () =>{
+    setFilterBook(jsData)
+    setSearch('')
+  }
+
   return (
         <>
         <Header />
           <div className='d-flex' >
             <div className='scroll-top'>
-              <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
-                {!showFiltersDiv && <Filters showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>}
+            { filterBook.length === 0 ? <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
+                <Filters search={search} setSearch={setSearch} cancelFilters={cancelFilters} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>
                 <div className='filters-collapse'
-                  onClick={()=> setShowFiltersDiv(!showFiltersDiv)}>
+                  onClick={()=> {setShowFiltersDiv(!showFiltersDiv); cancelFilters()}}>
                   <i className={`fas ${showFiltersDiv ? 'fa-filter' :'fa-times-circle'}`}></i>
                 </div>
+              </div>:
+              <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
+              {!showFiltersDiv && <Filters search={search} setSearch={setSearch} cancelFilters={cancelFilters} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>}
+              <div className='filters-collapse'
+                onClick={()=> {setShowFiltersDiv(!showFiltersDiv); cancelFilters()}}>
+                <i className={`fas ${showFiltersDiv ? 'fa-filter' :'fa-times-circle'}`}></i>
               </div>
+            </div>}
               <a href='#top' className='back-top'><i className="fas fa-arrow-circle-up"></i></a>
             </div>
             {filterBook.length !== 0 ? 
