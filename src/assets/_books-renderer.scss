@@ -1,0 +1,132 @@
+.container-books {
+  width: 80%;
+  margin: 1em auto;
+  color: $white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 4em;
+  position: relative;
+  & > .content-books {
+    background: $white;
+    border: 1px solid $white;
+    & > div {
+      min-height: 100%;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      .details-book {
+        margin: 1.2em;
+        display: flex;
+        align-items: flex-start;
+        div {
+          width: 90%;
+          background: $text-color;
+          padding: 0.25em;
+        }
+      }
+    }
+  }
+}
+
+/***card**/
+
+.card-item {
+  position: relative;
+  padding: 0;
+  min-height: 24em;
+  min-width: 15em;
+  max-width: 15em;
+  border-radius: 0.5em;
+  transform: perspective(2000px);
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: box-shadow 1s;
+  z-index: 1;
+  box-shadow: inset 300px 0 50px rgba($black, 0.01), 
+              4px 4px 15px 2px rgba($black, 0.15),
+              -4px -4px 15px 2px rgba($black, 0.15);
+
+  &:hover {
+    box-shadow: inset 0.1em 0 1.5em rgba($black, 0.4);
+  }
+
+  & img {
+    background: $white;
+    width: 100%;
+    min-height: 20em;
+    max-height: 20em;
+    z-index: 2;
+    border-radius: 0.5em;
+    transform-origin: left;
+    transition: 1s;
+  }
+  &:last-child img {
+    width: 100%;
+  }
+
+  &:hover img {
+    transform: rotateY(-110deg);
+  }
+  &img:hover {
+    transform: rotateY(-110deg);
+  }
+}
+.card-text {
+  position: absolute;
+  top: 1.9em;
+  left: 1em;
+  right: 1em;
+  width: calc(100% - 2em);
+  & div {
+    margin-top: 0.2em;
+    padding: 0.25em 0.5em;
+    background: $text-color;
+    width: 100%;
+    background: $text-color;
+  }
+}
+.card-item:hover .detail-btn {
+  display: none;
+}
+
+.detail-btn {
+  background: $text-color !important;
+  color: $white;
+  font-weight: 600;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  margin-top: 5.7em !important;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+  &.align {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 10%;
+    left: 0%;
+    transform: translateX(-50%);
+  }
+}
+
+.show-more {
+  background: $text-color;
+  max-height: fit-content !important;
+  & .detail-btn {
+    background: $white !important;
+    color: $black;
+    margin-top: 2em !important;
+    margin-bottom: 0% !important;
+    &:hover {
+      background: $bg-color !important;
+    }
+  }
+}
+
+.loader {
+  margin: 15% 25%;
+  font-size: 3rem;
+  color: $text-color;
+  width: 100vw;
+}
