@@ -50,15 +50,14 @@ img {
 /*****************************************/
 
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap");
-@import './variable';
-@import './scroll-bar';
-@import './books-renderer';
-@import './filters';
-@import './title';
-@import './sort';
-
+@import "./variable";
+@import "./scroll-bar";
+@import "./books-renderer";
+@import "./filters";
+@import "./title";
+@import "./sort";
+@import "./favorite";
 
 body {
   background: $bg-color;
 }
-
