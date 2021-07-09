@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Button, Form, FormControl } from 'react-bootstrap'
+import Favorite from './Favorite'
 import Sort from './Sort'
 
 
-const Filters =({showFiltersDiv, setFilterBook, jsData, filterBook, search, setSearch}) =>{
+const Filters =({showFiltersDiv, setFilterBook, jsData, filterBook, search, setSearch, favArr2, setFavArr2}) =>{
 
   const [showSort, setShowSort] = useState(true)
   const [showFilters, setShowFilters] = useState(false)
@@ -27,33 +28,36 @@ const Filters =({showFiltersDiv, setFilterBook, jsData, filterBook, search, setS
   }, [jsData, setFilterBook, search])
 
   const uniqAuthor = filterBook.map(({author}) => {
-    return {count: 1, author: author}
-    }).reduce((a, b) => {
-      a[b.author] = (a[b.author] || 0) + b.count
-      return a}, {}
-    )
+  return {count: 1, author: author}
+  }).reduce((a, b) => {
+    a[b.author] = (a[b.author] || 0) + b.count
+    return a}, {}
+  )
 
   const sortedAuthor = Object.keys(uniqAuthor).sort((a, b) => uniqAuthor[a] < uniqAuthor[b]).filter(a => a.author === uniqAuthor.author)
 
   const filterAuthor = (author) => {
     setFilterBook(filterBook.filter((a) => a.author === author));
   }
+
   const uniqTitle = filterBook.map(({title}) => {
-    return {count: 1, title: title}
-    }).reduce((a, b) => {
-      a[b.title] = (a[b.title] || 0) + b.count
-      return a}, {}
-    )
+  return {count: 1, title: title}
+  }).reduce((a, b) => {
+    a[b.title] = (a[b.title] || 0) + b.count
+    return a}, {}
+  )
 
   const sortedTitle = Object.keys(uniqTitle).sort((a, b) => uniqTitle[a] < uniqTitle[b]).filter(a => a.title === uniqTitle.title)
 
   const filterTitle = (title) => {
-      setFilterBook(filterBook.filter((a) => a.title === title));
+    setFilterBook(filterBook.filter((a) => a.title === title));
   }
+  
 
   const sizeOpt = 6
   const displayedOpt = sortedAuthor.filter(o => o).slice(0, sizeOpt)
   const visibleOpt = sortedAuthor.map(o => o)
+  
   const displayedOptTitle = sortedTitle.filter(o => o).slice(0, sizeOpt)
   const visibleOptTitle = sortedAuthor.map(o => o)
 
@@ -113,6 +117,7 @@ const Filters =({showFiltersDiv, setFilterBook, jsData, filterBook, search, setS
         </>
         }
         <Button size='sm' className='filter-btn font-weight-bold' onClick={()=>cancelFilters()}>Remove filters</Button>
+        <Favorite favArr2={favArr2} setFavArr2={setFavArr2} setFilterBook={setFilterBook} filterBook={filterBook} />
     </div>
   )
 }

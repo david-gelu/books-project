@@ -4,24 +4,27 @@ import data from './data'
 import Filters from './Filters'
 import Header from './Header'
 
-export default function App() {
+const BooksRender = () => {
   const [jsData, setJsData] = useState([])
   const [filterBook, setFilterBook] = useState(jsData)
-  const[count, setCount] = useState(9)
+  const [count, setCount] = useState(9)
   const [showFiltersDiv, setShowFiltersDiv] = useState(true)
   const [search, setSearch] = useState('')
+  const [favArr, setFavArr] = useState([])
+  const [favArr2, setFavArr2] = useState(favArr)
 
   useEffect(() => {
       const makejsData = async () => {
-          await setJsData(data)
+        await setJsData(data)
       }
       makejsData()
   }, [jsData])
 
-  const cancelFilters = () =>{
-    setFilterBook(jsData)
-    setSearch('')
+  const favBtn = (title) => {
+    setFavArr(jsData.filter((a) => a.title === title).map(t => t.title))
   }
+  const value = favArr.map(a =>a)
+  const setDataFav = ()=>setFavArr2(prevArr => [...prevArr, value])
 
   return (
         <>
@@ -29,18 +32,18 @@ export default function App() {
           <div className='d-flex' >
             <div className='scroll-top'>
             { filterBook.length === 0 ? <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
-                <Filters search={search} setSearch={setSearch} cancelFilters={cancelFilters} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>
+                <Filters favArr2={favArr2} search={search} setSearch={setSearch} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>
                 <div className='filters-collapse'
                   onClick={()=> setShowFiltersDiv(!showFiltersDiv)}>
                   <i className={`fas ${showFiltersDiv ? 'fa-filter' :'fa-times-circle'}`}></i>
                 </div>
               </div>:
               <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
-              {!showFiltersDiv && <Filters search={search} setSearch={setSearch} cancelFilters={cancelFilters} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>}
-              <div className='filters-collapse'
-                onClick={()=> setShowFiltersDiv(!showFiltersDiv)}>
-                <i className={`fas ${showFiltersDiv ? 'fa-filter' :'fa-times-circle'}`}></i>
-              </div>
+                {!showFiltersDiv &&<Filters favArr2={favArr2} search={search} setSearch={setSearch} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData}/>}
+                <div className='filters-collapse'
+                  onClick={()=> setShowFiltersDiv(!showFiltersDiv)}>
+                  <i className={`fas ${showFiltersDiv ? 'fa-filter' :'fa-times-circle'}`}></i>
+                </div>
             </div>}
               <a href='#top' className='back-top'><i className="fas fa-arrow-circle-up"></i></a>
             </div>
@@ -68,6 +71,9 @@ export default function App() {
                         <div key={`${idx}-btn`} size='sm' className="detail-btn align">
                           {title}
                         </div>
+                        <div key={`${idx}-fav-btn`}  onClick={()=> {favBtn(title); setDataFav()}} className="fav-btn align">
+                          Add to favorite
+                        </div>
                       </div>
                     </div>
                   </>
@@ -80,3 +86,6 @@ export default function App() {
     </> 
   )
 }
+
+
+export default BooksRender
