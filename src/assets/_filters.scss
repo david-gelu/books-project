@@ -108,9 +108,10 @@ form {
   scroll-behavior: smooth;
 }
 .back-top {
-  position: absolute;
+  position: fixed;
   margin: 0.75em;
-  bottom: 0;
+  bottom: 1em;
+  right: 0;
   z-index: 6;
   color: $text-color !important;
   font-size: 2rem;
