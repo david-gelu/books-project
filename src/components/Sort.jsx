@@ -80,14 +80,14 @@ const Sort = ({ setFilterBook, filterBook}) =>{
   const sortByLanguageDesc = () => {
     setFilterBook((filterBook)=> {
       const sorted = [...filterBook]
-      sorted.sort((a, b) =>  b.country.localeCompare(a.country))
+      sorted.sort((a, b) =>  b.language.localeCompare(a.language))
       return sorted
     })
   }
   const sortByLanguageAsc = () => {
     setFilterBook((filterBook)=> {
       const sorted = [...filterBook]
-      sorted.sort((a, b) =>  a.country.localeCompare(b.country))
+      sorted.sort((a, b) =>  a.language.localeCompare(b.language))
       return sorted
     })
   }
