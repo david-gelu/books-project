@@ -78,7 +78,9 @@ const BooksRender = () => {
                 </div>
               </>
             ))}
-        </div> : <div className='loader'>Library is opening</div>}
+        </div> : <div className='loader'>
+                  <h1>Library is opening</h1>
+        </div>}
       </div>
       <div className='show-more'>
         {count < filterBook.length ? <Button size='sm' className='detail-btn' onClick={() => {setCount(count + 9)} }>Show more </Button> : <></>}

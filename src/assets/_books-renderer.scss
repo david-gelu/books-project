@@ -132,8 +132,22 @@
 }
 
 .loader {
-  margin: 15% 25%;
-  font-size: 3rem;
-  color: $text-color;
-  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  font-family: "Playfair Display", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $white;
+  text-shadow: 8px 8px 0.01em rgba($black, 0.15);
+  padding: 0.5em;
+  background: $text-color;
+  & * {
+    font-size: 4rem;
+  }
 }
