@@ -2,94 +2,48 @@ import { Dropdown } from 'react-bootstrap'
 
 const Sort = ({ setFilterBook, filterBook}) =>{
 
+  const sorted = [...filterBook]
+  
   const sortByYearDesc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) => b.year - a.year)
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) => b.year - a.year))
   }
   const sortByYearAsc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) => a.year - b.year)
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) => a.year - b.year))
   }
     
   const sortByPagesDesc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) => b.pages - a.pages)
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) => b.pages - a.pages))
   }
   const sortByPagesAsc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) => a.pages - b.pages)
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) => a.pages - b.pages))
   }
     
   const sortByTitleDesc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) =>  b.title.localeCompare(a.title))
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) =>  b.title.localeCompare(a.title)))
   }
   const sortByTitleAsc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) =>  a.title.localeCompare(b.title))
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) =>  a.title.localeCompare(b.title)))
   }
     
   const sortByAuthorDesc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) =>  b.author.localeCompare(a.author))
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) =>  b.author.localeCompare(a.author)))
   }
   const sortByAuthorAsc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) =>  a.author.localeCompare(b.author))
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) =>  a.author.localeCompare(b.author)))
   }
 
   const sortByCountryDesc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) =>  b.country.localeCompare(a.country))
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) =>  b.country.localeCompare(a.country)))
   }
   const sortByCountryAsc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) =>  a.country.localeCompare(b.country))
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) =>  a.country.localeCompare(b.country)))
   }
     
   const sortByLanguageDesc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) =>  b.language.localeCompare(a.language))
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) =>  b.language.localeCompare(a.language)))
   }
   const sortByLanguageAsc = () => {
-    setFilterBook((filterBook)=> {
-      const sorted = [...filterBook]
-      sorted.sort((a, b) =>  a.language.localeCompare(b.language))
-      return sorted
-    })
+    setFilterBook(sorted.sort((a, b) =>  a.language.localeCompare(b.language)))
   }
     
   return (
