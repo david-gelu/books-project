@@ -4,8 +4,8 @@ import "./assets/style.scss";
 import BooksRender from './components/BooksRender';
 
 const App = () => {
-  return(
-    <BooksRender/>
+  return (
+    <BooksRender />
   )
 }
 

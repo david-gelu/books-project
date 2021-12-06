@@ -1,51 +1,51 @@
 import { Dropdown } from 'react-bootstrap'
 
-const Sort = ({ setFilterBook, filterBook}) =>{
+const Sort = ({ setFilterBook, filterBook }) => {
 
   const sorted = [...filterBook]
-  
+
   const sortByYearDesc = () => {
     setFilterBook(sorted.sort((a, b) => b.year - a.year))
   }
   const sortByYearAsc = () => {
     setFilterBook(sorted.sort((a, b) => a.year - b.year))
   }
-    
+
   const sortByPagesDesc = () => {
     setFilterBook(sorted.sort((a, b) => b.pages - a.pages))
   }
   const sortByPagesAsc = () => {
     setFilterBook(sorted.sort((a, b) => a.pages - b.pages))
   }
-    
+
   const sortByTitleDesc = () => {
-    setFilterBook(sorted.sort((a, b) =>  b.title.localeCompare(a.title)))
+    setFilterBook(sorted.sort((a, b) => b.title.localeCompare(a.title)))
   }
   const sortByTitleAsc = () => {
-    setFilterBook(sorted.sort((a, b) =>  a.title.localeCompare(b.title)))
+    setFilterBook(sorted.sort((a, b) => a.title.localeCompare(b.title)))
   }
-    
+
   const sortByAuthorDesc = () => {
-    setFilterBook(sorted.sort((a, b) =>  b.author.localeCompare(a.author)))
+    setFilterBook(sorted.sort((a, b) => b.author.localeCompare(a.author)))
   }
   const sortByAuthorAsc = () => {
-    setFilterBook(sorted.sort((a, b) =>  a.author.localeCompare(b.author)))
+    setFilterBook(sorted.sort((a, b) => a.author.localeCompare(b.author)))
   }
 
   const sortByCountryDesc = () => {
-    setFilterBook(sorted.sort((a, b) =>  b.country.localeCompare(a.country)))
+    setFilterBook(sorted.sort((a, b) => b.country.localeCompare(a.country)))
   }
   const sortByCountryAsc = () => {
-    setFilterBook(sorted.sort((a, b) =>  a.country.localeCompare(b.country)))
+    setFilterBook(sorted.sort((a, b) => a.country.localeCompare(b.country)))
   }
-    
+
   const sortByLanguageDesc = () => {
-    setFilterBook(sorted.sort((a, b) =>  b.language.localeCompare(a.language)))
+    setFilterBook(sorted.sort((a, b) => b.language.localeCompare(a.language)))
   }
   const sortByLanguageAsc = () => {
-    setFilterBook(sorted.sort((a, b) =>  a.language.localeCompare(b.language)))
+    setFilterBook(sorted.sort((a, b) => a.language.localeCompare(b.language)))
   }
-    
+
   return (
     <>
       <Dropdown size='sm'>

@@ -1,5 +1,5 @@
-const Header = () =>{
-  return(
+const Header = () => {
+  return (
     <section className="title">
       <h1>
         Books for everyone
