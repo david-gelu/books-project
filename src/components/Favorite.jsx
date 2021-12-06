@@ -20,10 +20,10 @@ const Favorite = ({ favArr2, setFilterBook, filterBook }) => {
   const sizeOpt = 6
   const displayedOptFav = favTitle.filter(o => o).slice(0, sizeOpt)
   const visibleOptFav = favTitle.map(o => o)
-
+  console.log(visibleOptFav.length >= 1 && visibleOptFav.length);
   return (
     <>
-      <Button size='sm' className='filter-btn font-weight-bold' onClick={() => setShowFav(!showFav)}>Favorites</Button>
+      <Button size='sm' className='filter-btn font-weight-bold' onClick={() => setShowFav(!showFav)}>Favorites {visibleOptFav.length && visibleOptFav.length - 1}</Button>
       {showFav &&
         <div className='dropdown-container'>
           <div className='fav-container'>
