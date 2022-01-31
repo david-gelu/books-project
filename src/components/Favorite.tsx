@@ -8,20 +8,12 @@ const Favorite = (props: any) => {
   const [showEntireListFav, setShowEntireListFav] = useState(false)
   const [showFav, setShowFav] = useState(false)
 
-  const dataTitle = favArr.map((a: Book) => {
-    return a.title
-  })
+  const dataTitle = favArr.map((a: Book) => a)
   const uniqTitle = _.uniq(dataTitle)
   const sortedTitle = uniqTitle.sort((a: string, b: string) => a.localeCompare(b))
   const filterFav = (title: string) => {
     setFilterBook(filterBook.filter((a: Book) => a.title === title));
   }
-
-  console.log(filterBook, 'filterBook')
-  console.log(favArr, 'favArr')
-  console.log(dataTitle, 'arr')
-  console.log(sortedTitle, 'sorted')
-  console.log(uniqTitle, 'uniq')
 
   const sizeOpt = 6
   const displayedOptFav = sortedTitle.filter((o: string[]) => o).slice(0, sizeOpt)
