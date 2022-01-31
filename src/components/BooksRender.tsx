@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import data from './data'
+import data from '../data'
 import Filters from './Filters'
 import Header from './Header'
+import { Book } from 'src/types'
 
 const BooksRender = () => {
   const [jsData, setJsData] = useState([])
@@ -11,20 +12,20 @@ const BooksRender = () => {
   const [showFiltersDiv, setShowFiltersDiv] = useState(true)
   const [search, setSearch] = useState('')
   const [favArr, setFavArr] = useState([])
-  const [favArr2, setFavArr2] = useState(favArr)
 
   useEffect(() => {
-    const makejsData = async () => {
-      await setJsData(data)
+    const makejsData = () => {
+      setJsData(data)
     }
     makejsData()
   }, [jsData])
 
-  const favBtn = (title) => {
-    setFavArr(jsData.filter((a) => a.title === title).map(t => t.title))
+  const favBtn = (title: string) => {
+    setFavArr(filterBook.filter((a) => a.title === title).map(t => t.title))
   }
+
   const value = favArr.map(a => a)
-  const setDataFav = () => setFavArr2(prevArr => [...prevArr, value])
+  const setDataFav = () => setFavArr(prev => prev.concat(value))
 
   return (
     <>
@@ -32,14 +33,14 @@ const BooksRender = () => {
       <div className='d-flex' >
         <div className='scroll-top'>
           {filterBook.length === 0 ? <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
-            <Filters favArr2={favArr2} search={search} setSearch={setSearch} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData} />
+            <Filters favArr={favArr} search={search} setSearch={setSearch} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData} />
             <div className='filters-collapse'
               onClick={() => setShowFiltersDiv(!showFiltersDiv)}>
               <i className={`fas ${showFiltersDiv ? 'fa-filter' : 'fa-times-circle'}`}></i>
             </div>
           </div> :
             <div className='filter-left' id='top' aria-expanded={!showFiltersDiv}>
-              {!showFiltersDiv && <Filters favArr2={favArr2} search={search} setSearch={setSearch} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData} />}
+              {!showFiltersDiv && <Filters favArr={favArr} search={search} setSearch={setSearch} showFiltersDiv={showFiltersDiv} filterBook={filterBook} setFilterBook={setFilterBook} jsData={jsData} />}
               <div className='filters-collapse'
                 onClick={() => setShowFiltersDiv(!showFiltersDiv)}>
                 <i className={`fas ${showFiltersDiv ? 'fa-filter' : 'fa-times-circle'}`}></i>
@@ -50,7 +51,7 @@ const BooksRender = () => {
         {filterBook.length !== 0 ?
           <div className="container-books">
             {filterBook
-              .filter((title) => filterBook.title !== title)
+              .filter((title: any) => filterBook.map((t: any) => t.title) !== title)
               .slice(0, count)
               .map(({ title, imageLink, author, country, language, link, pages, year, idx }) => (
                 <>
@@ -71,7 +72,11 @@ const BooksRender = () => {
                       <div key={`${idx}-btn`} size='sm' className="detail-btn align">
                         {title}
                       </div>
-                      <div key={`${idx}-fav-btn`} onClick={() => { favBtn(title); setDataFav() }} className="fav-btn align">
+                      <div key={`${idx}-fav-btn`} className="fav-btn align"
+                        onClick={() => {
+                          favBtn(title)
+                          setDataFav()
+                        }}>
                         Add to favorite
                       </div>
                     </div>

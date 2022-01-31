@@ -1,6 +1,7 @@
+import React from "react"
 import { Dropdown } from 'react-bootstrap'
 
-const Sort = ({ setFilterBook, filterBook }) => {
+const Sort = ({ setFilterBook, filterBook }: any) => {
 
   const sorted = [...filterBook]
 
